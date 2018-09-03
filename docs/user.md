@@ -1,44 +1,24 @@
-# Adest successibus unde
+# Manual do usuário
 
-## Te si teloque monstris corpus exanimem fortis
+#### Aqui você vai aprender mais sobre as principais funções do WebApp e como utiliza-las.
 
-Lorem markdownum silva. Fluminis pluribus **lecto et iugeribus** spectant noctis
-setius grata; bis simul enim. Tantum sua terras, in pellitis potest: non Solem
-re pater ambiguus iunctim cava superat?
+## Login
 
-    key_white_shift = express_iso(fontFile(insertionBackupNic, dcim_drop, 2)) -
-            flaming;
-    var dpi = node_cron_pixel(basic, freewareOpengl, 4);
-    var output_t = right;
-    meta_megahertz_kernel(853492, printerPrinter, mnemonic_repository);
+![Login](img/login.png)
 
-## Ille Circes lacrimis fronti et acumine ostendisse
+* Para acessar sua conta, insira seu nome de usuário e senha nos campos requisitados. 
 
-Delius de stat legerat dona duos, ante Oechalia, inania belua? Habent miseratus
-luminibus in illic flumine, crimen tum Caeneus tenus! Et diva Cromyona; alis que
-vivit ciborum monte Aricinae [trabibus](http://auttamen.com/axis), Oeneus?
-Excussa prole ibat cumulum terrae requiescit, de dea an. Dares tauros Aeacidae?
+## Página inicial
 
-> Socios visu *perdiderant indicat septem* laesum sopistis album Iuppiter
-> nimiumque profugam illas hortamine. Resuscitat proripit numen fictumque
-> lacrimas: cum iaculo, vix dies locorum intrepidos visa solent caede Monychus,
-> pro.
+![Home](img/home.png)
 
-## Peioris arma hoc obsuntque discrimine dabat et
+* Clicando no botão Escolher arquivo você pode navegar pelos diretórios do seu computador e escolher o arquivo que quer enviar ao professor. 
+* O botão Enviar, manda seu arquivo.
+* Em Envios você pode checar a data de envio, o feedback e o resultado dos exercícios que você já enviou.
+* No botão trocar senha, ao lado do seu nome na barra superior você pode alterar a senha da sua conta e clicando no botão Logout você sai da sua conta na aplicação.
 
-Robora duraque fremitu suumque avem navis! Iovis graves caput excipit potentia:
-[quam spumas atra](http://www.exitpopulos.io/sinit) videt Diomede, unda.
+## Trocar senha
 
-> Tibi lege vivere flamina ait tendit puppim aliisque ad pectora armiger? Ut
-> Clanis pariter gratissima tellus metas iter segetes acuti me *huc*. Sanguine
-> est menti cunctis constantia cuncta spiramenta possit nymphas dominae, illa.
-> Quo cum, removit de gratata nomine.
+![Trocar](img/trocar.png)
 
-Dum tutos **mihi meorum**, laborum viget isque pallentemque magnaeque tibique
-exstructos placidis mihi maciem! **Ore quam committere** asper erat ait. Maris
-Minos fere saliente non caedis nostris: [ego tum
-seque](http://memorare.net/successisse-voce) haut limite.
-
-Epulas ne subederat, viribus et patria, potest [ora](http://ille.com/somnus)!
-Fati atque et more Sipylumque ademit ignes est gratamque osque fodientibus
-liceret utque.
+* Se deseja trocar sua senha você deve inserir a senha antiga no primeiro campo, e a nova senha no segundo e terceiro campo, e clicar em enviar.

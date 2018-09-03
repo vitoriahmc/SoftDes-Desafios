@@ -1,4 +1,4 @@
-site_name: My Docs
+site_name: Documentações
 pages:
   - Página inicial: index.md
   - Manual do usuário: user.md

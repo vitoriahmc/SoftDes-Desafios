@@ -5,5 +5,5 @@ Repositório do projeto [github.com/raulikeda/SoftDes-Desafios](https://github.c
 ## Documentações disponíveis
 
 * [Manual do usuário](user.md)
-* Manual do professor
-* Manual do desenvolvedor
+* [Manual do professor](professor.md)
+* [Manual do desenvolvedor](dev.md)
