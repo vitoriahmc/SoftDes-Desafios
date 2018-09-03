@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>Documentações</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Manual do desenvolvedor - Documentações</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">Documentações</a>
+                    <a class="navbar-brand" href="..">Documentações</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,10 +47,10 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">Página inicial</a>
+                                <a href="..">Página inicial</a>
                             </li>
                             <li >
-                                <a href="/user/">Manual do usuário</a>
+                                <a href="../user/">Manual do usuário</a>
                             </li>
                         </ul>
 
@@ -66,15 +66,59 @@
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#manual-do-desenvolvedor">Manual do desenvolvedor</a></li>
+            <li><a href="#ferramentas-necessarias">Ferramentas necessárias</a></li>
+            <li><a href="#descricao-de-arquivos">Descrição de arquivos</a></li>
+            <li><a href="#para-rodar-a-aplicacao">Para rodar a aplicação</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
-
-
+<h1 id="manual-do-desenvolvedor">Manual do desenvolvedor</h1>
+<h2 id="ferramentas-necessarias">Ferramentas necessárias</h2>
+<ul>
+<li>Python, SQL, SQLite3, Flask.</li>
+</ul>
+<h2 id="descricao-de-arquivos">Descrição de arquivos</h2>
+<ul>
+<li>adduser.py: a partir do arquivo users.csv, adiciona novos usuários ao banco de dados e gera automaticamente uma senha, que é igual ao nome de usuário;</li>
+<li>softdes.py: conecta-se ao banco de dados e a aplicação via Flask, e compara o arquivo enviado com o gabarito, gerando uma nota e a salvando no banco de dados e exibindo na aplicação, na conta referente ao usuário que enviou o arquivo. Também realiza a função de login, comparando o que foi inserido com os dados de usuário e senha do banco de dados, e o processo de alteração da senha.</li>
+</ul>
+<h2 id="para-rodar-a-aplicacao">Para rodar a aplicação</h2>
+<ul>
+<li>
+<p>Acessar o prompt de comando do SQLite3 e rodar o script quiz.sql:</p>
+<pre><code>SQLITE3 quiz.db &lt; quiz.sql
+</code></pre>
+</li>
+<li>
+<p>Criar um arquivo chamado users.csv com um usuário e seu respectivo tipo na mesma cédula separado por vírgula:</p>
+<pre><code>Exemplo: maria, user
+</code></pre>
+</li>
+</ul>
+<p>Salvar o arquivo na mesma pasta de adduser.py.</p>
+<ul>
+<li>
+<p>Rodar o arquivo adduser.py no prompt de comando:</p>
+<pre><code>python adduser.py
+</code></pre>
+</li>
+<li>
+<p>Rodar o arquivo softdes.py no prompt de comando:</p>
+<pre><code>python softdes.py
+</code></pre>
+</li>
+<li>
+<p>Acessar no browser http://127.0.0.1:80 e inserir no campo user o mesmo nome que foi criado no arquivo users.csv, e no campo password, o próprio usuário de novo:</p>
+<pre><code>Exemplo: 
+user: maria
+password: maria
+</code></pre>
+</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
@@ -82,11 +126,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "..",
                 shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
-        <script src="/js/base.js" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
