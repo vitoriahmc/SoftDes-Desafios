@@ -1,0 +1,4 @@
+site_name: My Docs
+pages:
+  - Página inicial: index.md
+  - Manual do usuário: user.md
