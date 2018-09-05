@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Wed Jun 28 09:00:39 2017
 
-def desafio1(n):
-	"""Função de teste para a aplicação."""
-	#return 0
-	return n
+@author: raulikeda
+"""
+
+def desafio1(n_var):
+    """Função de teste para a aplicação."""
+    return n_var

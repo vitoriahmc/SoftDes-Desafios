@@ -33,30 +33,35 @@
             
   <h1>Source code for adduser</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Wed Jun 28 09:00:39 2017</span>
 
+<span class="sd">@author: raulikeda</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">sqlite3</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
 
-<div class="viewcode-block" id="addUser"><a class="viewcode-back" href="../adduser.html#adduser.addUser">[docs]</a><span class="k">def</span> <span class="nf">addUser</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
-	<span class="sd">&quot;&quot;&quot;Adiciona o usuário ao banco de dados quiz.db a partir do arquivo users.csv, juntamente ao seu tipo e a sua senha,</span>
-<span class="sd">	que também é gerada no método utilizando a hashlib.md5.&quot;&quot;&quot;</span>
-	
-	<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;quiz.db&#39;</span><span class="p">)</span>
-	<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-	<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;Insert into USER(user,pass,type) values(&quot;</span><span class="si">{0}</span><span class="s1">&quot;,&quot;</span><span class="si">{1}</span><span class="s1">&quot;,&quot;</span><span class="si">{2}</span><span class="s1">&quot;);&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="nb">type</span><span class="p">))</span>
-	<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-	<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  
+<div class="viewcode-block" id="add_user"><a class="viewcode-back" href="../adduser.html#adduser.add_user">[docs]</a><span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">tipo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adiciona o usuário ao banco de dados quiz.db a partir do arquivo users.csv, juntamente</span>
+<span class="sd">    ao seu tipo e a sua senha, que também é gerada no método utilizando a hashlib.md5.&quot;&quot;&quot;</span>
 
-	<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;quiz.db&#39;</span><span class="p">)</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;Insert into USER(user,pass,type) values(&quot;</span><span class="si">{0}</span><span class="s1">&quot;,&quot;</span><span class="si">{1}</span><span class="s1">&quot;,&quot;</span><span class="si">{2}</span><span class="s1">&quot;);&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span>
+                                                                                        <span class="n">tipo</span><span class="p">))</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-		<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;users.csv&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-		  <span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 
-		<span class="k">for</span> <span class="n">users</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-		  <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-		  <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
-		  <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
-		  <span class="n">addUser</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(),</span> <span class="nb">type</span><span class="p">)</span></div>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;users.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_var</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">file_var</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">users</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">tipo</span><span class="p">)</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="n">user</span>
+            <span class="nb">print</span> <span class="n">tipo</span>
+            <span class="n">add_user</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(),</span> <span class="n">tipo</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
