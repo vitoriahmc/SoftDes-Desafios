@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
 def desafio1(n):
-    #return 0
-    return n
+	"""Função de teste para a aplicação."""
+	#return 0
+	return n

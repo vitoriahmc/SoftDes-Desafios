@@ -2,7 +2,7 @@
 """
 Created on Wed Jun 28 09:00:39 2017
 
-@author: rauli
+@author: raulikeda
 """
 from flask import Flask, request, jsonify, abort, make_response, session, render_template
 from flask_httpauth import HTTPBasicAuth
@@ -19,6 +19,7 @@ babel = Babel(app)
 DBNAME = './quiz.db'
 
 def lambda_handler(event, context):
+    """Executa a função do arquivo recebido do usuário e verifica sua validade."""
     try:
         import json 
         import numbers
@@ -50,9 +51,11 @@ def lambda_handler(event, context):
         return "Função inválida."
 
 def converteData(orig):
+    """Converte data do formato YY/MM/DD para DD/MM/YY"""
     return orig[8:10]+'/'+orig[5:7]+'/'+orig[0:4]+' '+orig[11:13]+':'+orig[14:16]+':'+orig[17:]
 
 def getQuizes(user):
+    """Seleciona um quiz do banco de dados."""
     conn = sqlite3.connect(DBNAME)
     cursor = conn.cursor()
     if user == 'admin' or user == 'fabioja':
@@ -64,6 +67,7 @@ def getQuizes(user):
     return info
 
 def getUserQuiz(userid, quizid):
+    """Seleciona um quiz a partir do usuário que o enviou."""
     conn = sqlite3.connect(DBNAME)
     cursor = conn.cursor()
     cursor.execute("SELECT sent,answer,result from USERQUIZ where userid = '{0}' and quizid = {1} order by sent desc".format(userid, quizid))
@@ -72,6 +76,7 @@ def getUserQuiz(userid, quizid):
     return info
 
 def setUserQuiz(userid, quizid, sent, answer, result):
+    """Adiciona o quiz ao banco de dados juntamente as informações do usuário que o enviou e de seu resultado."""
     conn = sqlite3.connect(DBNAME)
     cursor = conn.cursor()
     #print("insert into USERQUIZ(userid,quizid,sent,answer,result) values ('{0}',{1},'{2}','{3}','{4}');".format(userid, quizid, sent, answer, result))
@@ -82,6 +87,7 @@ def setUserQuiz(userid, quizid, sent, answer, result):
     conn.close()
 
 def getQuiz(id, user):
+    """Seleciona um quiz com todas as informações referentes a ele."""
     conn = sqlite3.connect(DBNAME)
     cursor = conn.cursor()
     if user == 'admin' or user == 'fabioja':
@@ -93,6 +99,7 @@ def getQuiz(id, user):
     return info
 
 def setInfo(pwd, user):
+    """Atualiza no banco de dados as informações de senha de um usuário."""
     conn = sqlite3.connect(DBNAME)
     cursor = conn.cursor()
     cursor.execute("UPDATE USER set pass = ? where user = ?",(pwd, user))
@@ -100,6 +107,7 @@ def setInfo(pwd, user):
     conn.close()
 
 def getInfo(user):
+    """Retorna as informações de senha e tipo de um usuário."""
     conn = sqlite3.connect(DBNAME)
     cursor = conn.cursor()
     cursor.execute("SELECT pass, type from USER where user = '{0}'".format(user))
@@ -119,6 +127,8 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?TX'
 @app.route('/', methods=['GET', 'POST'])
 @auth.login_required
 def main():
+    """Compara os desafios recebidos aos respectivos gabaritos e atribui um feedback. Também verifica a existência de novos desafios
+    e a validade dos arquivos enviados."""
     msg = ''
     p = 1
     challenges=getQuizes(auth.username())
@@ -185,6 +195,7 @@ def main():
 @app.route('/pass', methods=['GET', 'POST'])
 @auth.login_required
 def change():
+    """ Realiza a troca de senha no banco de dados, quando ela é efetuada na API."""
     if request.method == 'POST':
         velha = request.form['old']
         nova = request.form['new']
@@ -211,14 +222,17 @@ def change():
 
 @app.route('/logout')
 def logout():
+    """Realiza o logout."""
     return render_template('index.html',p=2, msg=_("Logout com sucesso")), 401
 
 @auth.get_password
 def get_password(username):
+    """Retorna a senha de um usuário."""
     return getInfo(username)
 
 @auth.hash_password
 def hash_pw(password):
+    """Retorna o hash de uma senha."""
     return hashlib.md5(password.encode()).hexdigest()
 
 if __name__ == '__main__':
@@ -226,6 +240,7 @@ if __name__ == '__main__':
 
 @babel.localeselector
 def get_locale():
+    """Verifica as linguages em que há tradução disponível."""
     return request.accept_languages.best_match(Config['LANGUAGES'])
 
 
